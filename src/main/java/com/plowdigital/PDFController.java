@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PDFController {
 
-    private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Greeting(counter.incrementAndGet(),
-                String.format(template, name));
+    @RequestMapping("/pdftotext")
+    public PDFText greeting(@RequestParam(value="name", defaultValue="World") String name) {
+
+        String fileName = "/Users/andrewpoland/Downloads/test2.pdf";
+        String text = PDFUtil.extract(fileName);
+
+        return new PDFText(counter.incrementAndGet(),
+                text);
     }
 }
