@@ -19,7 +19,7 @@ public class PDFUtil {
             pdDoc = PDDocument.load(input);
             pdfStripper = new PDFTextStripper();
             parsedText = pdfStripper.getText(pdDoc);
-            System.out.println(parsedText.replaceAll("[^A-Za-z0-9. ]+", ""));
+            //System.out.println(parsedText.replaceAll("[^A-Za-z0-9. ]+", ""));
         } catch (Exception e) {
             e.printStackTrace();
             try {

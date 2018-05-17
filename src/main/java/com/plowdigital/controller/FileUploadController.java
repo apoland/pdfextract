@@ -22,7 +22,7 @@ public class FileUploadController {
         String content = "";
 
         try {
-            log.info("Process file: " + file.getName());
+            log.info("Process file: " + file.getOriginalFilename());
             content = PDFUtil.extract(file.getInputStream());
 
         } catch (Exception e) {
