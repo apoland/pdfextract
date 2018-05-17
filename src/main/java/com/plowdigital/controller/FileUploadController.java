@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class FileUploadController {
 
@@ -17,12 +19,12 @@ public class FileUploadController {
 
     @PostMapping("/pdftotext")
     public Response handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                     HttpServletRequest request) {
 
         String content = "";
 
         try {
-            log.info("Process file: " + file.getOriginalFilename());
+            log.info("["+request.getRemoteAddr()+"] Process file: " + file.getOriginalFilename() );
             content = PDFUtil.extract(file.getInputStream());
 
         } catch (Exception e) {
