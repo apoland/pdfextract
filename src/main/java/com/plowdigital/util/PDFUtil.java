@@ -1,22 +1,22 @@
-package com.plowdigital;
+package com.plowdigital.util;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
+import java.io.InputStream;
 
 
 public class PDFUtil {
 
-    public static String extract(String filename) {
+    public static String extract(InputStream input) {
 
         PDDocument pdDoc = null;
         PDFTextStripper pdfStripper;
 
         String parsedText = "";
-        File file = new File(filename);
         try {
-            pdDoc = PDDocument.load(file);
+            pdDoc = PDDocument.load(input);
             pdfStripper = new PDFTextStripper();
             parsedText = pdfStripper.getText(pdDoc);
             System.out.println(parsedText.replaceAll("[^A-Za-z0-9. ]+", ""));
