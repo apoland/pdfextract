@@ -4,12 +4,11 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
-import java.io.InputStream;
 
 
 public class PDFUtil {
 
-    public static String extract(InputStream input) {
+    public static String extract(File input) {
 
         PDDocument pdDoc = null;
         PDFTextStripper pdfStripper;
